@@ -1,0 +1,101 @@
+---
+title: "Mārtiņa Open web OI"
+author: "Mārtiņš Mednis"
+date: now
+date-format: "YYYY-MM-DD HH:mm:ss"
+language: 
+  title-block-author-single: "Autors"
+  title-block-published: "Sagatavots"
+format:
+  email
+execute:
+  echo: false
+---
+
+```{python}
+#| output: false
+import pyodbc
+import pandas as pd
+from sqlalchemy import create_engine, text
+from great_tables import GT, loc, style
+from datetime import date
+
+import requests
+import os
+
+# Today
+today = date.today()
+
+# ---- Connection ----
+for driver in pyodbc.drivers():
+    print(driver)
+
+engine = create_engine(
+    "mssql+pyodbc://ezers.bank.lv,50906/DEF"
+    "?driver=ODBC+Driver+18+for+SQL+Server"
+    "&TrustServerCertificate=yes"
+)
+
+# ---- Query: filter to the latest POZ_DATUMS on the server side ----
+sql = """
+SELECT *
+FROM DATI_GLOBUS.dbo.LB_POSITION
+WHERE POZ_DATUMS = (
+    SELECT MAX(POZ_DATUMS)
+    FROM DATI_GLOBUS.dbo.LB_POSITION
+);
+"""
+df = pd.read_sql(sql, engine)
+print(df)
+
+df_payload = df.to_csv(index=False)
+
+api_key = os.getenv("OI_CLOUD_KEY")
+if api_key is None:
+    raise ValueError("OI_CLOUD_KEY environment variable is not set")
+
+BASE_URL = "https://prod-oi-cloud.bank.lv/"
+MODEL = "gpt-5.4-web"
+
+headers = {
+    "Authorization": f"Bearer {api_key}",
+    "Content-Type": "application/json"
+}
+
+payload = {
+    "model": MODEL,
+    "messages": [
+        {"role": "system", "content": "You are a helpful assistant."},
+        {
+            "role": "user",
+            "content": f"""
+Analyse this CSV data:
+
+```csv
+{df_payload}
+             
+"""              
+        }        
+    ],
+
+    "temperature": 1
+}
+
+r = requests.post(
+    BASE_URL + "api/chat/completions",
+    headers=headers,
+    json=payload,
+    timeout=300,
+    verify=False
+)
+
+data = r.json()
+
+print(data)
+
+if "choices" in data:
+    answer = data["choices"][0]["message"]["content"]
+    print(answer)
+else:
+    print("ERROR: API response has no 'choices'.")
+```

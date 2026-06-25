@@ -1,0 +1,12 @@
+{
+  "hash": "0f3f0621ab3d430daac11eb0443b743e",
+  "result": {
+    "engine": "jupyter",
+    "markdown": "---\ntitle: \"Mārtiņa Open web OI\"\nauthor: \"Mārtiņš Mednis\"\ndate: now\ndate-format: \"YYYY-MM-DD HH:mm:ss\"\nlanguage: \n  title-block-author-single: \"Autors\"\n  title-block-published: \"Sagatavots\"\nformat:\n  email\nexecute:\n  echo: false\n---\n\n::: {#98acaeb2 .cell execution_count=1}\n\n::: {.cell-output .cell-output-stderr}\n```\nC:\\Users\\Martins\\AppData\\Roaming\\Python\\Python314\\site-packages\\urllib3\\connectionpool.py:1097: InsecureRequestWarning: Unverified HTTPS request is being made to host 'prod-oi-cloud.bank.lv'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings\n  warnings.warn(\n```\n:::\n\n::: {.cell-output .cell-output-stdout}\n```\nStatus: 200\n{'id': 'chatcmpl-9bdf504a-e068-496c-ba65-d14c65335259', 'created': 1780307329, 'model': 'gpt-5.4-web', 'object': 'chat.completion', 'choices': [{'finish_reason': 'stop', 'index': 0, 'message': {'content': '2026. gada IIHF vīriešu pasaules hokeja čempioni bija **Somija**. Finālā, kas notika **2026. gada 31. maijā**, Somija pagarinājumā ar **1:0** uzvarēja **Šveici**. ([iihf.com](https://www.iihf.com/en/events/2026/wm/news/74787/gmg))\\n\\nJa gribi, varu arī pateikt, kas ieguva bronzu vai iedot visu medaļnieku trijnieku.', 'role': 'assistant', 'reasoning_content': '', 'reasoning_items': [{'type': 'reasoning', 'id': 'rs_0cdc2abda956bd1e006a1d558910bc819695cd517f6e73f401', 'summary': []}], 'annotations': [{'type': 'url_citation', 'end_index': 230, 'start_index': 163, 'title': 'IIHF - Helenius scores the golden goal', 'url': 'https://www.iihf.com/en/events/2026/wm/news/74787/gmg'}]}}], 'usage': {'completion_tokens': 474, 'prompt_tokens': 9765, 'total_tokens': 10239, 'completion_tokens_details': {'reasoning_tokens': 345}, 'prompt_tokens_details': {'cached_tokens': 0}}}\n2026. gada IIHF vīriešu pasaules hokeja čempioni bija **Somija**. Finālā, kas notika **2026. gada 31. maijā**, Somija pagarinājumā ar **1:0** uzvarēja **Šveici**. ([iihf.com](https://www.iihf.com/en/events/2026/wm/news/74787/gmg))\n\nJa gribi, varu arī pateikt, kas ieguva bronzu vai iedot visu medaļnieku trijnieku.\n```\n:::\n:::\n\n\n",
+    "supporting": [
+      "Python_from_ezers_files\\figure-html"
+    ],
+    "filters": [],
+    "includes": {}
+  }
+}

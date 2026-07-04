@@ -36,7 +36,7 @@ engine = create_engine(
     "&TrustServerCertificate=yes"
 )
 
-# ---- Query: fillter to the latest POZ_DATUMS on the server side -----
+# ---- Query: filter to the latest POZ_DATUMS on the server side -----
 sql = """
 SELECT *
 FROM DATI_GLOBUS.dbo.LB_POSITION

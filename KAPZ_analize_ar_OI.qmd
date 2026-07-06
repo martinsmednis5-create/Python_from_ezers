@@ -1,5 +1,5 @@
 ---
-title: "Mārtiņa Open web OI"
+title: "KAPZ datu analīze"
 author: "Mārtiņš Mednis"
 date: now
 date-format: "YYYY-MM-DD HH:mm:ss"
